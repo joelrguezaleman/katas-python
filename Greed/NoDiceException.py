@@ -1,0 +1,2 @@
+class NoDiceException(Exception):
+    pass
