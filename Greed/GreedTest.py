@@ -21,6 +21,7 @@ class GreedTest(unittest.TestCase):
             (2, 0),
             (3, 0),
             (4, 0),
+            (5, 50),
             (6, 0),
         )
     )

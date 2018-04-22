@@ -5,4 +5,9 @@ class Greed:
     def score(self, dice):
         if not dice:
             raise NoDiceException()
-        return 100 if dice[0] == 1 else 0
+        if (dice[0] == 1):
+            return 100
+        elif (dice[0] == 5):
+            return 50
+        else:
+            return 0
