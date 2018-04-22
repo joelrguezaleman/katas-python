@@ -17,12 +17,13 @@ class GreedTest(unittest.TestCase):
 
     @data_provider(
         lambda: (
-            (2,),
-            (3,),
-            (4,),
-            (6,),
+            (1, 100),
+            (2, 0),
+            (3, 0),
+            (4, 0),
+            (6, 0),
         )
     )
-    def testItReturnsZeroForAThrowWithASingleDieThatIsNotAOneOrAFive(self, die):
+    def testItReturnsTheCorrectScoreDependingOnTheDice(self, die, expected_score):
         score = self.greed.score(dice=[die])
-        self.assertEqual(0, score)
+        self.assertEqual(expected_score, score)
