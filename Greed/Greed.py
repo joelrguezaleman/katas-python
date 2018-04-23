@@ -10,6 +10,7 @@ class Greed:
             return self._handle_a_throw_of_one_die(dice[0])
         if number_of_dice == 2:
             return self._handle_a_throw_of_two_dice(dice)
+        return 100;
 
     def _handle_a_throw_of_one_die(self, die):
         if die in [2, 3, 4, 6]:
