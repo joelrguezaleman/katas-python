@@ -29,6 +29,7 @@ class GreedTest(unittest.TestCase):
             ([1, 1], 0),
             ([5, 5], 0),
             ([1, 3, 4], 100),
+            ([1, 1, 4], 0),
         )
     )
     def testItReturnsTheCorrectScoreDependingOnTheDice(self, dice, expected_score):
