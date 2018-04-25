@@ -21,4 +21,9 @@ class Greed:
         return 150 if (dice == [1, 5] or dice == [5, 1]) else 0
 
     def _handle_a_throw_of_three_dice(self, dice):
-        return 100 if dice.count(1) == 1 else 0
+        number_of_ones = dice.count(1)
+        if (number_of_ones == 1):
+            return 100
+        if (number_of_ones == 3):
+            return 1000
+        return 0
