@@ -21,6 +21,8 @@ class Greed:
             return 1000
         if (number_of[1] == 1):
             return 150 if number_of[5] == 1 else 100
+        if (number_of[5] == 3):
+            return 500
         if (number_of[5] == 1):
             return 50
         return 0
