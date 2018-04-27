@@ -1,12 +1,25 @@
 from Greed import Greed
 from NoDiceException import NoDiceException
+from NumberOfOccurrencesRule import NumberOfOccurrencesRule
 from unittest_data_provider import data_provider
 import unittest
 
 class GreedTest(unittest.TestCase):
 
     def setUp(self):
-        self.greed = Greed()
+        rules = [
+            NumberOfOccurrencesRule(die=1, number_of_occurrences=1, score=100),
+            NumberOfOccurrencesRule(die=5, number_of_occurrences=1, score=50),
+            NumberOfOccurrencesRule(die=1, number_of_occurrences=3, score=1000),
+            NumberOfOccurrencesRule(die=2, number_of_occurrences=3, score=200),
+            NumberOfOccurrencesRule(die=3, number_of_occurrences=3, score=300),
+            NumberOfOccurrencesRule(die=4, number_of_occurrences=3, score=400),
+            NumberOfOccurrencesRule(die=5, number_of_occurrences=3, score=500),
+            NumberOfOccurrencesRule(die=6, number_of_occurrences=3, score=600),
+            NumberOfOccurrencesRule(die=1, number_of_occurrences=4, score=2000),
+            NumberOfOccurrencesRule(die=2, number_of_occurrences=4, score=400),
+        ]
+        self.greed = Greed(rules)
 
     def testItRaisesAnExceptionIfItAttemptsToScoreWithoutDice(self):
         self.assertRaises(
@@ -39,6 +52,7 @@ class GreedTest(unittest.TestCase):
             ([4, 4, 4], 400),
             ([6, 6, 6], 600),
             ([1, 1, 1, 1], 2000),
+            ([2, 2, 2, 2], 400),
         )
     )
     def testItReturnsTheCorrectScoreDependingOnTheDice(self, dice, expected_score):
