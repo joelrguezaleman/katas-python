@@ -15,6 +15,8 @@ class Greed:
         return number_of
 
     def _calculate_score(self, number_of):
+        if 4 in number_of:
+            return 2000
         if 3 in number_of:
             die_number = number_of.index(3)
             return 1000 if die_number == 1 else die_number * 100
