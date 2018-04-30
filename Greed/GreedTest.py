@@ -22,6 +22,12 @@ class GreedTest(unittest.TestCase):
             NumberOfOccurrencesRule(die=4, number_of_occurrences=4, score=800),
             NumberOfOccurrencesRule(die=5, number_of_occurrences=4, score=1000),
             NumberOfOccurrencesRule(die=6, number_of_occurrences=4, score=1200),
+            NumberOfOccurrencesRule(die=1, number_of_occurrences=5, score=4000),
+            NumberOfOccurrencesRule(die=2, number_of_occurrences=5, score=800),
+            NumberOfOccurrencesRule(die=3, number_of_occurrences=5, score=1200),
+            NumberOfOccurrencesRule(die=4, number_of_occurrences=5, score=1600),
+            NumberOfOccurrencesRule(die=5, number_of_occurrences=5, score=2000),
+            NumberOfOccurrencesRule(die=6, number_of_occurrences=5, score=2400),
         ]
         self.greed = Greed(rules)
 
@@ -71,6 +77,12 @@ class GreedTest(unittest.TestCase):
             ([5, 3, 3, 3], 350),
             ([5, 4, 4, 4], 450),
             ([5, 6, 6, 6], 650),
+            ([1, 1, 1, 1, 1], 4000),
+            ([2, 2, 2, 2, 2], 800),
+            ([3, 3, 3, 3, 3], 1200),
+            ([4, 4, 4, 4, 4], 1600),
+            ([5, 5, 5, 5, 5], 2000),
+            ([6, 6, 6, 6, 6], 2400),
         )
     )
     def testItReturnsTheCorrectScoreDependingOnTheDice(self, dice, expected_score):
