@@ -1,6 +1,7 @@
 from Greed import Greed
 from NoDiceException import NoDiceException
 from NumberOfOccurrencesRule import NumberOfOccurrencesRule
+from ThreePairsRule import ThreePairsRule
 from unittest_data_provider import data_provider
 import unittest
 
@@ -34,6 +35,7 @@ class GreedTest(unittest.TestCase):
             NumberOfOccurrencesRule(die=4, number_of_occurrences=6, score=3200),
             NumberOfOccurrencesRule(die=5, number_of_occurrences=6, score=4000),
             NumberOfOccurrencesRule(die=6, number_of_occurrences=6, score=4800),
+            ThreePairsRule()
         ]
         self.greed = Greed(rules)
 
@@ -114,6 +116,7 @@ class GreedTest(unittest.TestCase):
             ([4, 4, 4, 4, 4, 4], 3200),
             ([5, 5, 5, 5, 5, 5], 4000),
             ([6, 6, 6, 6, 6, 6], 4800),
+            ([1, 1, 2, 2, 3, 3], 800),
         )
     )
     def testItReturnsTheCorrectScoreDependingOnTheDice(self, dice, expected_score):
