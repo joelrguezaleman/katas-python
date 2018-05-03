@@ -6,6 +6,4 @@ class NumberOfOccurrencesRule:
         self.score = score
 
     def validate(self, number_of):
-        if number_of[self.die] == self.number_of_occurrences:
-            return self.score
-        return 0
+        return self.score if number_of[self.die] == self.number_of_occurrences else 0
