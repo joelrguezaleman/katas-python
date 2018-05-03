@@ -1,6 +1,8 @@
+from ASingleOccurrenceRule import ASingleOccurrenceRule
 from Greed import Greed
 from NoDiceException import NoDiceException
 from NumberOfOccurrencesRule import NumberOfOccurrencesRule
+from StraightRule import StraightRule
 from ThreePairsRule import ThreePairsRule
 from unittest_data_provider import data_provider
 import unittest
@@ -8,9 +10,10 @@ import unittest
 class GreedTest(unittest.TestCase):
 
     def setUp(self):
+        straight_rule = StraightRule()
         rules = [
-            NumberOfOccurrencesRule(die=1, number_of_occurrences=1, score=100),
-            NumberOfOccurrencesRule(die=5, number_of_occurrences=1, score=50),
+            ASingleOccurrenceRule(die=1, score=100, straight_rule=straight_rule),
+            ASingleOccurrenceRule(die=5, score=50, straight_rule=straight_rule),
             NumberOfOccurrencesRule(die=1, number_of_occurrences=3, score=1000),
             NumberOfOccurrencesRule(die=2, number_of_occurrences=3, score=200),
             NumberOfOccurrencesRule(die=3, number_of_occurrences=3, score=300),
@@ -35,7 +38,8 @@ class GreedTest(unittest.TestCase):
             NumberOfOccurrencesRule(die=4, number_of_occurrences=6, score=3200),
             NumberOfOccurrencesRule(die=5, number_of_occurrences=6, score=4000),
             NumberOfOccurrencesRule(die=6, number_of_occurrences=6, score=4800),
-            ThreePairsRule()
+            ThreePairsRule(),
+            straight_rule,
         ]
         self.greed = Greed(rules)
 
@@ -136,6 +140,7 @@ class GreedTest(unittest.TestCase):
             ([3, 3, 4, 4, 6, 6], 800),
             ([3, 3, 5, 5, 6, 6], 800),
             ([4, 4, 5, 5, 6, 6], 800),
+            ([1, 2, 3, 4, 5, 6], 1200),
         )
     )
     def testItReturnsTheCorrectScoreDependingOnTheDice(self, dice, expected_score):
